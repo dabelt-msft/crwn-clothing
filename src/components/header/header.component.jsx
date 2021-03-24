@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {auth} from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg' 
 
@@ -23,9 +23,11 @@ const Header = ({ currentUser }) => {
                 </Link>
                 {
                     currentUser ?
-                    <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
+                    <div className='option' onClick={() => auth.signOut()}>
+                        SIGN OUT
+                    </div> :
                     <Link className='option' to='/signin'>
-                    SIGN IN
+                        SIGN IN
                     </Link>
                 }
                 
@@ -35,8 +37,11 @@ const Header = ({ currentUser }) => {
     )
 }
 
+//state here is the root reducer because mapStateToProps is passed through connect()
+//from there we access the user reducer and so forth
 const mapStateToProps = state => ({
     currentUser: state.user.currentUser
 })
 
+//passing mapStateToProps to connects gets the result of currentUser (currently set to null) and will pass as props to the Header Component
 export default connect(mapStateToProps)(Header);
