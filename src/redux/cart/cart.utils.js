@@ -1,5 +1,4 @@
 export const addItemToCart = (cartItems, cartItemToAdd) => {
-  console.log(typeof cartItems, " -- type");
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
